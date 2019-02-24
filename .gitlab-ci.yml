@@ -1,0 +1,8 @@
+stages:
+- test
+
+unit_test:
+  image: cirrusci/flutter:latest
+  stage: test
+  script:
+  - flutter test
