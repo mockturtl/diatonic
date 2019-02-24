@@ -1,3 +1,3 @@
 #!/bin/sh -e
 
-dartfmt .
+dartfmt -w --set-exit-if-changed .
