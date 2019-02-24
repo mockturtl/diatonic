@@ -1,22 +1,10 @@
-A library for Dart developers.
+## TODO
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-
-## Usage
-
-A simple usage example:
-
-```dart
-import 'package:diatonic/diatonic.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+- aux scales
+  - diminished (half-whole = dom/dim, whole-half = tonic dim)
+  - whole tone
+  - augmented: min3,half,min3,half,min3,half
+  - pentatonic maj/min
+    - blues maj/min
+    - maj pent b6
+    - min pent b5
