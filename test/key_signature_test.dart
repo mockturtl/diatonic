@@ -1,4 +1,13 @@
-import 'package:diatonic/diatonic.dart';
+import 'package:diatonic/diatonic.dart'
+    show
+        MajorKeySharp,
+        MajorKeyFlat,
+        MinorKeySharp,
+        MinorKeyFlat,
+        keySharp,
+        keyFlat,
+        keySharpMinor,
+        keyFlatMinor;
 import 'package:test/test.dart';
 
 void main() {

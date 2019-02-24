@@ -1,4 +1,5 @@
-import 'package:diatonic/diatonic.dart';
+import 'package:diatonic/diatonic.dart'
+    show quality, Major, MajorKeyFlat, MajorKeySharp, keySharp, keyFlat;
 import 'package:test/test.dart';
 
 import 'fixtures/major_modes.dart';

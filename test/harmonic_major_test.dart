@@ -1,4 +1,4 @@
-import 'package:diatonic/diatonic.dart';
+import 'package:diatonic/diatonic.dart' show quality, HarmonicMajor;
 import 'package:test/test.dart';
 
 void main() {

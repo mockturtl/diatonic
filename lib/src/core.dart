@@ -43,6 +43,7 @@ List<int> _toSemitones(List<interval> scale) =>
     scale.map((ival) => _sizeOf(ival)).toList(growable: false);
 
 enum interval {
+  nil,
   halfStep,
   min2,
   step,
@@ -80,8 +81,7 @@ class Scale {
   final List<int> intervals;
 
   Scale(List<interval> scale, int modeIndex)
-      : assert(modeIndex >= 1, modeIndex <= 7),
-        assert(scale.length == 7),
+      : assert(modeIndex >= 1, modeIndex <= scale.length),
         intervals = _toSemitones(List.generate(
             scale.length, (i) => scale[(i + modeIndex - 1) % scale.length])) {
     assert(_sumIntervals(intervals.length) == 12);
@@ -118,21 +118,23 @@ class Scale {
 
   bool get _bb3 => _sumIntervals(2) == _sizeOf(interval.maj2);
 
-  bool get _bb7 => _lastInterval == _sizeOf(interval.min3);
+  bool get _bb7 => _seventhInterval == _sizeOf(interval.doubleFlat7);
 
   bool get _flat2 => _sumIntervals(1) == _sizeOf(interval.min2);
 
   bool get _flat5 => _sumIntervals(4) == _sizeOf(interval.flat5);
 
-  int get _lastInterval => intervals[intervals.length - 1];
-
   bool get _maj3 => _sumIntervals(2) == _sizeOf(interval.maj3);
 
-  bool get _maj7 => _lastInterval == _sizeOf(interval.halfStep);
+  bool get _maj7 => _seventhInterval == _sizeOf(interval.maj7);
 
   bool get _min3 => _sumIntervals(2) == _sizeOf(interval.min3);
 
-  bool get _min7 => _lastInterval == _sizeOf(interval.step);
+  bool get _min7 => _seventhInterval == _sizeOf(interval.min7);
+
+  int get _seventhInterval => intervals.length >= 7
+      ? _sumIntervals(6)
+      : intervals[intervals.length - 1];
 
   bool get _sharp5 => _sumIntervals(4) == _sizeOf(interval.sharp5);
 
