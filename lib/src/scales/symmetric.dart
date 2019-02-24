@@ -47,3 +47,17 @@ class Diminished {
   /// AKA whole-half
   static get tonicDiminished => _modes[1];
 }
+
+class WholeTone {
+  static const _scale = [
+    interval.step,
+    interval.step,
+    interval.step,
+    interval.step,
+    interval.step,
+    interval.step,
+  ];
+
+  /// #4 #5 #6
+  static get wholeTone => Scale(_scale);
+}

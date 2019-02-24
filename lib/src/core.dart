@@ -80,7 +80,7 @@ enum quality {
 class Scale {
   final List<int> intervals;
 
-  Scale(List<interval> scale, int modeIndex)
+  Scale(List<interval> scale, [int modeIndex = 1])
       : assert(modeIndex >= 1, modeIndex <= scale.length),
         intervals = _toSemitones(List.generate(
             scale.length, (i) => scale[(i + modeIndex - 1) % scale.length])) {
