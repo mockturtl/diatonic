@@ -14,12 +14,12 @@ void main() {
       expect(MelodicMinor.lydianAug.chordQuality, equals(quality.augmented));
     });
     test('IV7', () {
-      expect(
-          MelodicMinor.lydianDominant.chordQuality, equals(quality.dominant));
+      expect(MelodicMinor.mixolydianSharp11.chordQuality,
+          equals(quality.dominant));
     });
     test('V7', () {
       expect(
-          MelodicMinor.aeolianDominant.chordQuality, equals(quality.dominant));
+          MelodicMinor.mixolydianFlat6.chordQuality, equals(quality.dominant));
     });
     test('vi7b5', () {
       expect(MelodicMinor.locrianNatural2.chordQuality, equals(quality.min7b5));

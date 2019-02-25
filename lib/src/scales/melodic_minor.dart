@@ -16,10 +16,6 @@ class MelodicMinor {
     value: (i) => Scale(_scale, i),
   );
 
-  /// b6 b7
-  /// AKA desc melodic major, mixolydian b6
-  static get aeolianDominant => _modes[5];
-
   /// b2 b3(#9) b4(3) b5 b6(#5) b7
   /// AKA super locrian, diminished whole tone
   static get alteredDominant => _modes[7];
@@ -37,7 +33,11 @@ class MelodicMinor {
   /// #4 #5
   static get lydianAug => _modes[3];
 
+  /// b6 b7
+  /// AKA desc melodic major, aeolian dominant
+  static get mixolydianFlat6 => _modes[5];
+
   /// #4 b7
-  /// AKA mixolydian #11
-  static get lydianDominant => _modes[4];
+  /// AKA lydian dominant
+  static get mixolydianSharp11 => _modes[4];
 }

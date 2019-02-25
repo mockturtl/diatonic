@@ -18,8 +18,7 @@ void main() {
       expect(HarmonicMinor.dorianSharp4.chordQuality, equals(quality.minor));
     });
     test('V7b9', () {
-      expect(
-          HarmonicMinor.phrygianDominant.chordQuality, equals(quality.altered));
+      expect(HarmonicMinor.phrygianMajor.chordQuality, equals(quality.altered));
     });
     test('VIΔ', () {
       expect(HarmonicMinor.lydianSharp9.chordQuality, equals(quality.major));
