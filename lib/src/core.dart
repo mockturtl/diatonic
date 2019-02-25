@@ -89,6 +89,8 @@ class Scale {
 
   // Chord quality is determined by certain intervals within the scale.
   quality get chordQuality {
+    if (intervals.length == 5) return _pentatonicQuality;
+
     if (_min3) {
       if (_flat5) {
         if (_bb7) return quality.diminished;
@@ -131,6 +133,12 @@ class Scale {
   bool get _min3 => _sumIntervals(2) == _sizeOf(interval.min3);
 
   bool get _min7 => _seventhInterval == _sizeOf(interval.min7);
+
+  quality get _pentatonicQuality {
+    if (_sumIntervals(2) == _sizeOf(interval.maj3)) return quality.major;
+    if (_sumIntervals(1) == _sizeOf(interval.min3)) return quality.minor;
+    return quality.unknown;
+  }
 
   int get _seventhInterval => intervals.length >= 7
       ? _sumIntervals(6)
