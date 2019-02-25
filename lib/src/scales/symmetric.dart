@@ -58,6 +58,6 @@ class WholeTone {
     interval.step,
   ];
 
-  /// #4 #5 #6
+  /// #4 #5 b7
   static get wholeTone => Scale(_scale);
 }

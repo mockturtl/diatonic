@@ -1,5 +1,31 @@
 import '../core.dart';
 
+class MajorFlat6Pentatonic {
+  static const _scale = [
+    interval.step,
+    interval.step,
+    interval.min3,
+    interval.halfStep,
+    interval.maj3,
+  ];
+
+  /// root 2 3 5 b6
+  static get major => Scale(_scale);
+}
+
+class MinorFlat5Pentatonic {
+  static const _scale = [
+    interval.min3,
+    interval.step,
+    interval.halfStep,
+    interval.maj3,
+    interval.step,
+  ];
+
+  /// root b3 4 b5 b7
+  static get minor => Scale(_scale);
+}
+
 class Pentatonic {
   static const _scale = [
     interval.step,
