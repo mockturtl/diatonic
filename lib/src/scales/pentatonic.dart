@@ -36,7 +36,7 @@ class Pentatonic {
   ];
 
   static final _modes = Map<int, Scale>.fromIterable(
-    List.generate(5, (i) => i + 1, growable: false),
+    List.generate(_scale.length, (i) => i + 1, growable: false),
     value: (i) => Scale(_scale, i),
   );
 
