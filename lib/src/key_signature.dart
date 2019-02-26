@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'core.dart';
 
 const _noteIndex = {
@@ -198,8 +200,53 @@ class MinorKeySharp with _ScaleNotes {
   }
 }
 
+class Notes {
+  final UnmodifiableListView<String> _list;
+  final quality _chordQuality;
+  final UnmodifiableMapView<int, String> _map;
+
+  Notes(List<String> notes, this._chordQuality)
+      : assert(notes.isNotEmpty),
+        _map = UnmodifiableMapView(
+            notes.asMap().map((i, n) => MapEntry(i + 1, n))),
+        _list = UnmodifiableListView(notes);
+
+  List<String> get asList => _list;
+
+  String get chordSymbol {
+    switch (_chordQuality) {
+      case quality.major:
+        return 'Maj7';
+      case quality.minor:
+        return 'min7';
+      case quality.dominant:
+        return '7';
+      default:
+        return '$_chordQuality';
+    }
+  }
+
+  String get eleventh => _map[4];
+
+  String get fifth => _map[5];
+
+  String get ninth => _map[2];
+
+  String get root => _map[1];
+
+  String get seventh => _map[7];
+
+  String get tetrad => '$triad $seventh';
+
+  String get third => _map[3];
+
+  String get thirteenth => _map[6];
+
+  String get triad => '$root $third $fifth';
+}
+
 mixin _ScaleNotes implements _ScalePresenter {
-  List<String> notesFor(Scale scale, String rootNote) {
+  Notes notesFor(Scale scale, String rootNote) {
     var dist = 0;
     final out = [tones[dist]];
     for (var i in scale.intervals) {
@@ -208,11 +255,12 @@ mixin _ScaleNotes implements _ScalePresenter {
     }
     out.removeLast(); // discard octave
 
-    return out
+    var notes = out
         .map((n) => (n + _noteIndex[rootNote]) % tones.length)
         .map((n) => _noteNames[n])
         .map(_present)
         .toList(growable: false);
+    return Notes(notes, scale.chordQuality);
   }
 }
 
