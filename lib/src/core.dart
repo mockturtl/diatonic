@@ -136,7 +136,11 @@ class Scale {
 
   quality get _pentatonicQuality {
     if (_sumIntervals(2) == _sizeOf(interval.maj3)) return quality.major;
-    if (_sumIntervals(1) == _sizeOf(interval.min3)) return quality.minor;
+    if (_sumIntervals(1) == _sizeOf(interval.min3)) {
+      if (_sumIntervals(3) == _sizeOf(interval.flat5))
+        return quality.diminished;
+      return quality.minor;
+    }
     return quality.unknown;
   }
 
