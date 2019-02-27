@@ -16,10 +16,10 @@ class Augmented {
   );
 
   /// #9 3 ##4 #5 7
-  static get augmented => _modes[1];
+  static Scale get augmented => _modes[1];
 
   /// b9 3 4 #5 bb7
-  static get augmentedInverse => _modes[2];
+  static Scale get augmentedInverse => _modes[2];
 }
 
 class Diminished {
@@ -41,11 +41,11 @@ class Diminished {
 
   /// b2 b3 b4 b5 bb6 bb7 b7
   /// AKA half-whole
-  static get dominantDiminished => _modes[2];
+  static Scale get dominantDiminished => _modes[2];
 
   /// b3 b5 b6 bb7 7
   /// AKA whole-half
-  static get tonicDiminished => _modes[1];
+  static Scale get tonicDiminished => _modes[1];
 }
 
 class WholeTone {
@@ -59,5 +59,5 @@ class WholeTone {
   ];
 
   /// #4 #5 b7
-  static get scale => Scale(_scale);
+  static Scale get scale => Scale(_scale);
 }

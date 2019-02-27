@@ -16,8 +16,8 @@ class Blues {
   );
 
   /// root 2 b3 3 5 6
-  static get major => _modes[1];
+  static Scale get major => _modes[1];
 
   /// root b3 4 b5 5 b7
-  static get minor => _modes[6];
+  static Scale get minor => _modes[6];
 }

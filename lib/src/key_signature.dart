@@ -98,6 +98,29 @@ class MajorKeyFlat with _ScaleNotes {
 
   keyFlatMinor get relativeMinor => keyFlatMinor.values[value.index];
 
+  String get _keyNote {
+    switch (value) {
+      case keyFlat.C:
+        return 'C';
+      case keyFlat.F:
+        return 'F';
+      case keyFlat.Bb:
+        return 'Bb';
+      case keyFlat.Eb:
+        return 'Eb';
+      case keyFlat.Ab:
+        return 'Ab';
+      case keyFlat.Db:
+        return 'Db';
+      case keyFlat.Gb:
+        return 'Gb';
+      case keyFlat.Cb:
+        return 'Cb';
+      default:
+        return 'C';
+    }
+  }
+
   String _present(String note) {
     switch (note) {
       case 'F#':
@@ -129,6 +152,29 @@ class MajorKeySharp with _ScaleNotes {
 
   int get sharps => value.index;
 
+  String get _keyNote {
+    switch (value) {
+      case keySharp.C:
+        return 'C';
+      case keySharp.G:
+        return 'G';
+      case keySharp.D:
+        return 'D';
+      case keySharp.A:
+        return 'A';
+      case keySharp.E:
+        return 'E';
+      case keySharp.B:
+        return 'B';
+      case keySharp.Fsharp:
+        return 'F#';
+      case keySharp.Csharp:
+        return 'C#';
+      default:
+        return 'C';
+    }
+  }
+
   String _present(String note) {
     switch (note) {
       case 'F':
@@ -151,6 +197,29 @@ class MinorKeyFlat with _ScaleNotes {
   int get flats => value.index;
 
   keyFlat get relativeMajor => keyFlat.values[value.index];
+
+  String get _keyNote {
+    switch (value) {
+      case keyFlatMinor.Amin:
+        return 'A';
+      case keyFlatMinor.Dmin:
+        return 'D';
+      case keyFlatMinor.Gmin:
+        return 'G';
+      case keyFlatMinor.Cmin:
+        return 'C';
+      case keyFlatMinor.Fmin:
+        return 'F';
+      case keyFlatMinor.BbMin:
+        return 'Bb';
+      case keyFlatMinor.EbMin:
+        return 'Eb';
+      case keyFlatMinor.AbMin:
+        return 'Ab';
+      default:
+        return 'A';
+    }
+  }
 
   String _present(String note) {
     switch (note) {
@@ -184,6 +253,29 @@ class MinorKeySharp with _ScaleNotes {
   keySharp get relativeMajor => keySharp.values[value.index];
 
   int get sharps => value.index;
+
+  String get _keyNote {
+    switch (value) {
+      case keySharpMinor.Amin:
+        return 'A';
+      case keySharpMinor.Emin:
+        return 'E';
+      case keySharpMinor.Bmin:
+        return 'B';
+      case keySharpMinor.FsharpMin:
+        return 'F#';
+      case keySharpMinor.CsharpMin:
+        return 'C#';
+      case keySharpMinor.GsharpMin:
+        return 'G#';
+      case keySharpMinor.DsharpMin:
+        return 'D#';
+      case keySharpMinor.AsharpMin:
+        return 'A#';
+      default:
+        return 'A';
+    }
+  }
 
   String _present(String note) {
     switch (note) {
@@ -245,8 +337,13 @@ class Notes {
   String get triad => '$root $third $fifth';
 }
 
-mixin _ScaleNotes implements _ScalePresenter {
-  Notes notesFor(Scale scale, String rootNote) {
+abstract class _Rooted {
+  String get _keyNote;
+}
+
+mixin _ScaleNotes implements _ScalePresenter, _Rooted {
+  Notes notesFor(Scale scale) {
+    var offset = _noteIndex[_keyNote] + scale.offsetFromKeyCenter;
     var dist = 0;
     final out = [tones[dist]];
     for (var i in scale.intervals) {
@@ -256,7 +353,7 @@ mixin _ScaleNotes implements _ScalePresenter {
     out.removeLast(); // discard octave
 
     var notes = out
-        .map((n) => (n + _noteIndex[rootNote]) % tones.length)
+        .map((n) => (n + offset) % tones.length)
         .map((n) => _noteNames[n])
         .map(_present)
         .toList(growable: false);

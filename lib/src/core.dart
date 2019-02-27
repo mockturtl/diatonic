@@ -1,5 +1,11 @@
 final tones = List.generate(12, (i) => i, growable: false);
 
+List<interval> _rotate(List<interval> scale, int mode) {
+  assert(mode >= 1, mode <= scale.length);
+  return List.generate(
+      scale.length, (i) => scale[(i + mode - 1) % scale.length]);
+}
+
 int _sizeOf(interval i) {
   switch (i) {
     case interval.halfStep:
@@ -37,6 +43,12 @@ int _sizeOf(interval i) {
       print('ERROR: unhandled case $i');
       return 0;
   }
+}
+
+int _sum(List<int> values, int n) {
+  if (n == 0) return 0;
+  assert(n >= 1 && n <= values.length);
+  return values.take(n).reduce((i, j) => i + j);
 }
 
 List<int> _toSemitones(List<interval> scale) =>
@@ -79,11 +91,11 @@ enum quality {
 
 class Scale {
   final List<int> intervals;
+  final int offsetFromKeyCenter;
 
-  Scale(List<interval> scale, [int modeIndex = 1])
-      : assert(modeIndex >= 1, modeIndex <= scale.length),
-        intervals = _toSemitones(List.generate(
-            scale.length, (i) => scale[(i + modeIndex - 1) % scale.length])) {
+  Scale(List<interval> scale, [int mode = 1])
+      : intervals = _toSemitones(_rotate(scale, mode)),
+        offsetFromKeyCenter = _sum(_toSemitones(scale), mode - 1) {
     assert(_sumIntervals(intervals.length) == 12);
   }
 
@@ -155,8 +167,5 @@ class Scale {
   @override
   String toString() => '{Scale: $chordQuality $intervals}';
 
-  int _sumIntervals(int size) {
-    assert(size >= 1 && size <= intervals.length);
-    return intervals.take(size).reduce((i, j) => i + j);
-  }
+  int _sumIntervals(int size) => _sum(intervals, size);
 }

@@ -10,7 +10,7 @@ class MajorFlat6Pentatonic {
   ];
 
   /// root 2 3 5 b6
-  static get scale => Scale(_scale);
+  static Scale get scale => Scale(_scale);
 }
 
 class MinorFlat5Pentatonic {
@@ -23,7 +23,7 @@ class MinorFlat5Pentatonic {
   ];
 
   /// root b3 4 b5 b7
-  static get scale => Scale(_scale);
+  static Scale get scale => Scale(_scale);
 }
 
 class Pentatonic {
@@ -41,8 +41,8 @@ class Pentatonic {
   );
 
   /// root 2 3 5 6
-  static get major => _modes[1];
+  static Scale get major => _modes[1];
 
   /// root b3 4 5 b7
-  static get minor => _modes[5];
+  static Scale get minor => _modes[5];
 }
