@@ -1,4 +1,4 @@
-import '../core.dart';
+import '../scale.dart';
 
 class MelodicMinor {
   static const _scale = [

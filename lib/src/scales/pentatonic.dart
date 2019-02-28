@@ -1,4 +1,4 @@
-import '../core.dart';
+import '../scale.dart';
 
 class MajorFlat6Pentatonic {
   static const _scale = [

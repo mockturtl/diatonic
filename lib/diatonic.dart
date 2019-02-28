@@ -1,4 +1,4 @@
-export 'src/core.dart';
+export 'src/scale.dart';
 export 'src/key_signature.dart';
 export 'src/scales/double_harmonic_major.dart';
 export 'src/scales/harmonic_major.dart';

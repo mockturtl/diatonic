@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'core.dart';
+import 'scale.dart';
 
 const _noteIndex = {
   'A': 0,

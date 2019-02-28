@@ -1,4 +1,4 @@
-import '../core.dart';
+import '../scale.dart';
 
 class HarmonicMinor {
   static const _scale = [
