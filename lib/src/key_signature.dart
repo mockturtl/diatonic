@@ -41,6 +41,8 @@ const _noteNames = [
   'G#',
 ];
 
+final _tones = List.generate(12, (i) => i, growable: false);
+
 /// The index is the number of flats in the key signature.
 enum keyFlat {
   C,
@@ -353,15 +355,15 @@ mixin _ScaleNotes implements _ScalePresenter, _Rooted {
   Notes notesFor(Scale scale) {
     var offset = _noteIndex[_keyNote] + scale.offsetFromKeyCenter;
     var dist = 0;
-    final out = [tones[dist]];
+    final out = [_tones[dist]];
     for (var i in scale.intervals) {
       dist += i;
-      out.add(tones[dist % tones.length]);
+      out.add(_tones[dist % _tones.length]);
     }
     out.removeLast(); // discard octave
 
     var notes = out
-        .map((n) => (n + offset) % tones.length)
+        .map((n) => (n + offset) % _tones.length)
         .map((n) => _noteNames[n])
         .map(_present)
         .toList(growable: false);

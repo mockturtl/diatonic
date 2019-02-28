@@ -1,5 +1,3 @@
-final tones = List.generate(12, (i) => i, growable: false);
-
 List<interval> _rotate(List<interval> scale, int mode) {
   assert(mode >= 1, mode <= scale.length);
   return List.generate(
