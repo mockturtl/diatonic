@@ -104,7 +104,7 @@ class Scale {
     if (intervals.length == 5) return _pentatonicQuality;
 
     if (_min3) {
-      if (_flat5) {
+      if (_b5) {
         if (_bb7) return quality.diminished;
         if (_min7) return quality.min7b5;
       }
@@ -123,20 +123,20 @@ class Scale {
     }
 
     // enharmonic to b7, tonic, maj3, perf5
-    if (_bb3 && _flat5 && _bb7) return quality.dominant;
+    if (_bb3 && _b5 && _bb7) return quality.dominant;
 
     return quality.unknown;
   }
 
-  bool get _alt => _flat5 || _sharp5 || _flat2 || _sharp9;
+  bool get _alt => _b5 || _sharp5 || _b2 || _sharp9;
 
   bool get _bb3 => _sumIntervals(2) == _sizeOf(interval.maj2);
 
   bool get _bb7 => _seventhInterval == _sizeOf(interval.doubleFlat7);
 
-  bool get _flat2 => _sumIntervals(1) == _sizeOf(interval.min2);
+  bool get _b2 => _sumIntervals(1) == _sizeOf(interval.min2);
 
-  bool get _flat5 => _sumIntervals(4) == _sizeOf(interval.flat5);
+  bool get _b5 => _sumIntervals(4) == _sizeOf(interval.flat5);
 
   bool get _maj3 => _sumIntervals(2) == _sizeOf(interval.maj3);
 
