@@ -12,8 +12,27 @@ main() {
   ${Gmix.root}${Gmix.chordSymbol}: ${Gmix.tetrad}
   ${Cionian.root}${Cionian.chordSymbol}: ${Cionian.tetrad}''');
 
-  var x = MajorKeyFlat(keyFlat.Cb);
-  var n = x.notesFor(Major.ionian);
-  var flats = n.asList.fold(0, (c, note) => note.contains('b') ? c + 1 : c);
-  print('it has $flats flats');
+  for (var k in keyFlat.values) {
+    var x = MajorKeyFlat(k);
+    var n = x.notesFor(Major.ionian);
+    print('$k has ${n.flats} flats');
+  }
+
+  for (var k in keyFlatMinor.values) {
+    var x = MinorKeyFlat(k);
+    var n = x.notesFor(Major.ionian);
+    print('$k has ${n.flats} flats');
+  }
+
+  for (var k in keySharp.values) {
+    var x = MajorKeySharp(k);
+    var n = x.notesFor(Major.ionian);
+    print('$k has ${n.sharps} sharps');
+  }
+
+  for (var k in keySharpMinor.values) {
+    var x = MinorKeySharp(k);
+    var n = x.notesFor(Major.ionian);
+    print('$k has ${n.sharps} sharps');
+  }
 }

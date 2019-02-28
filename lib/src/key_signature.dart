@@ -199,26 +199,27 @@ class MinorKeyFlat with _ScaleNotes {
   keyFlat get relativeMajor => keyFlat.values[value.index];
 
   String get _keyNote {
-    switch (value) {
-      case keyFlatMinor.Amin:
-        return 'A';
-      case keyFlatMinor.Dmin:
-        return 'D';
-      case keyFlatMinor.Gmin:
-        return 'G';
-      case keyFlatMinor.Cmin:
-        return 'C';
-      case keyFlatMinor.Fmin:
-        return 'F';
-      case keyFlatMinor.BbMin:
-        return 'Bb';
-      case keyFlatMinor.EbMin:
-        return 'Eb';
-      case keyFlatMinor.AbMin:
-        return 'Ab';
-      default:
-        return 'A';
-    }
+    return MajorKeyFlat(relativeMajor)._keyNote;
+//    switch (value) {
+//      case keyFlatMinor.Amin:
+//        return 'A';
+//      case keyFlatMinor.Dmin:
+//        return 'D';
+//      case keyFlatMinor.Gmin:
+//        return 'G';
+//      case keyFlatMinor.Cmin:
+//        return 'C';
+//      case keyFlatMinor.Fmin:
+//        return 'F';
+//      case keyFlatMinor.BbMin:
+//        return 'Bb';
+//      case keyFlatMinor.EbMin:
+//        return 'Eb';
+//      case keyFlatMinor.AbMin:
+//        return 'Ab';
+//      default:
+//        return 'A';
+//    }
   }
 
   String _present(String note) {
@@ -255,26 +256,27 @@ class MinorKeySharp with _ScaleNotes {
   int get sharps => value.index;
 
   String get _keyNote {
-    switch (value) {
-      case keySharpMinor.Amin:
-        return 'A';
-      case keySharpMinor.Emin:
-        return 'E';
-      case keySharpMinor.Bmin:
-        return 'B';
-      case keySharpMinor.FsharpMin:
-        return 'F#';
-      case keySharpMinor.CsharpMin:
-        return 'C#';
-      case keySharpMinor.GsharpMin:
-        return 'G#';
-      case keySharpMinor.DsharpMin:
-        return 'D#';
-      case keySharpMinor.AsharpMin:
-        return 'A#';
-      default:
-        return 'A';
-    }
+    return MajorKeySharp(relativeMajor)._keyNote;
+//    switch (value) {
+//      case keySharpMinor.Amin:
+//        return 'A';
+//      case keySharpMinor.Emin:
+//        return 'E';
+//      case keySharpMinor.Bmin:
+//        return 'B';
+//      case keySharpMinor.FsharpMin:
+//        return 'F#';
+//      case keySharpMinor.CsharpMin:
+//        return 'C#';
+//      case keySharpMinor.GsharpMin:
+//        return 'G#';
+//      case keySharpMinor.DsharpMin:
+//        return 'D#';
+//      case keySharpMinor.AsharpMin:
+//        return 'A#';
+//      default:
+//        return 'A';
+//    }
   }
 
   String _present(String note) {
@@ -322,11 +324,17 @@ class Notes {
 
   String get fifth => _map[5];
 
+  int get flats =>
+      asList.fold(0, (acc, el) => el.contains('b') ? acc + 1 : acc);
+
   String get ninth => _map[2];
 
   String get root => _map[1];
 
   String get seventh => _map[7];
+
+  int get sharps =>
+      asList.fold(0, (acc, el) => el.contains('#') ? acc + 1 : acc);
 
   String get tetrad => '$triad $seventh';
 
