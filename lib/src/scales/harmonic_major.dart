@@ -29,6 +29,7 @@ class HarmonicMajor {
   static Scale get lydianAugSharp9 => _modes[6];
 
   /// b3 #4
+  /// AKA lydian diminished
   static Scale get lydianFlat3 => _modes[4];
 
   /// b2 b7
