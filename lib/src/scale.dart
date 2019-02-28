@@ -130,13 +130,13 @@ class Scale {
 
   bool get _alt => _b5 || _sharp5 || _b2 || _sharp9;
 
-  bool get _bb3 => _sumIntervals(2) == _sizeOf(interval.maj2);
-
-  bool get _bb7 => _seventhInterval == _sizeOf(interval.doubleFlat7);
-
   bool get _b2 => _sumIntervals(1) == _sizeOf(interval.min2);
 
   bool get _b5 => _sumIntervals(4) == _sizeOf(interval.flat5);
+
+  bool get _bb3 => _sumIntervals(2) == _sizeOf(interval.doubleFlat3);
+
+  bool get _bb7 => _seventhInterval == _sizeOf(interval.doubleFlat7);
 
   bool get _maj3 => _sumIntervals(2) == _sizeOf(interval.maj3);
 
