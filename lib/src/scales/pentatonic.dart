@@ -1,5 +1,18 @@
 import '../scale.dart';
 
+class HendrixPentatonic {
+  static const _scale = [
+    interval.min3,
+    interval.halfStep,
+    interval.min3,
+    interval.min3,
+    interval.step,
+  ];
+
+  /// root #9 3 5 b7
+  static Scale get scale => Scale(_scale);
+}
+
 class MajorFlat6Pentatonic {
   static const _scale = [
     interval.step,

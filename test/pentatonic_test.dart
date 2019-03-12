@@ -1,5 +1,10 @@
 import 'package:diatonic/diatonic.dart'
-    show quality, Pentatonic, MajorFlat6Pentatonic, MinorFlat5Pentatonic;
+    show
+        quality,
+        Pentatonic,
+        MajorFlat6Pentatonic,
+        MinorFlat5Pentatonic,
+        HendrixPentatonic;
 import 'package:test/test.dart';
 
 void main() {
@@ -16,6 +21,9 @@ void main() {
     test('minor b5', () {
       expect(
           MinorFlat5Pentatonic.scale.chordQuality, equals(quality.diminished));
+    });
+    test('Hendrix (minor b4)', () {
+      expect(HendrixPentatonic.scale.chordQuality, equals(quality.major));
     });
   });
 }

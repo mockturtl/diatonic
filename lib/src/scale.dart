@@ -87,6 +87,7 @@ enum quality {
   diminished,
 }
 
+/// The intervals of a scale must sum to an octave.
 class Scale {
   final List<int> intervals;
   final int offsetFromKeyCenter;
@@ -97,7 +98,7 @@ class Scale {
     assert(_sumIntervals(intervals.length) == 12);
   }
 
-  // Chord quality is determined by certain intervals within the scale.
+  /// Chord quality is determined by certain intervals within the scale.
   quality get chordQuality {
     if (intervals.length == 5) return _pentatonicQuality;
 
