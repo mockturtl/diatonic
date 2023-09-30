@@ -34,7 +34,9 @@ class HarmonicMinor {
   /// #2 #4
   static Scale get lydianSharp9 => _modes[6]!;
 
-  /// b2 b6 b7
-  /// AKA phrygian dominant
+  /// AKA [phrygianMajor]
+  static Scale get phrygianDominant => phrygianMajor;
+
+  /// b2 b6 b7, AKA [phrygianDominant]
   static Scale get phrygianMajor => _modes[5]!;
 }

@@ -1,6 +1,7 @@
 import '../core.dart';
 
 //ignore: avoid_classes_with_only_static_members
+/// https://en.wikipedia.org/wiki/Heptatonic_scale#Heptatonia_prima
 class Major {
   static const _scale = [
     Interval.step,

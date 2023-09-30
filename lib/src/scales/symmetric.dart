@@ -39,13 +39,17 @@ class Diminished {
       List.generate(2, (i) => i + 1, growable: false),
       value: (i) => Scale(_scale, i));
 
-  /// b2 b3 b4 b5 bb6 bb7 b7
-  /// AKA half-whole
+  /// b2 b3 b4 b5 bb6 bb7 b7,  AKA [halfWhole]
   static Scale get dominantDiminished => _modes[2]!;
 
-  /// b3 b5 b6 bb7 7
-  /// AKA whole-half
+  /// AKA [dominantDiminished]
+  static Scale get halfWhole => dominantDiminished;
+
+  /// b3 b5 b6 bb7 7,  AKA [wholeHalf]
   static Scale get tonicDiminished => _modes[1]!;
+
+  /// AKA [tonicDiminished]
+  static Scale get wholeHalf => tonicDiminished;
 }
 
 //ignore: avoid_classes_with_only_static_members

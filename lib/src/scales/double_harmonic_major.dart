@@ -16,13 +16,23 @@ class DoubleHarmonicMajor {
       List.generate(_scale.length, (i) => i + 1, growable: false),
       value: (i) => Scale(_scale, i));
 
-  /// b2 b6
-  /// AKA Gypsy major, Byzantine
+  /// AKA [doubleHarmonicMajor]
+  static Scale get byzantine => doubleHarmonicMajor;
+
+  /// b2 b6, AKA [gypsyMajor], [byzantine]
   static Scale get doubleHarmonicMajor => _modes[1]!;
 
-  /// b3 #4 b6
-  /// AKA Hungarian minor, Gypsy minor
+  /// b3 #4 b6, AKA [hungarianMinor], [gypsyMinor]
   static Scale get doubleHarmonicMinor => _modes[4]!;
+
+  /// AKA [doubleHarmonicMajor]
+  static Scale get gypsyMajor => doubleHarmonicMajor;
+
+  /// AKA [doubleHarmonicMinor]
+  static Scale get gypsyMinor => doubleHarmonicMinor;
+
+  /// AKA [doubleHarmonicMinor]
+  static Scale get hungarianMinor => doubleHarmonicMinor;
 
   /// #2 #5
   static Scale get ionianSharp2Sharp5 => _modes[6]!;
