@@ -1,23 +1,23 @@
 import '../core.dart';
 
+//ignore: avoid_classes_with_only_static_members
 class Blues {
   static const _scale = [
-    interval.step,
-    interval.halfStep,
-    interval.halfStep,
-    interval.min3,
-    interval.step,
-    interval.min3,
+    Interval.step,
+    Interval.halfStep,
+    Interval.halfStep,
+    Interval.min3,
+    Interval.step,
+    Interval.min3,
   ];
 
   static final _modes = Map<int, Scale>.fromIterable(
-    List.generate(_scale.length, (i) => i + 1, growable: false),
-    value: (i) => Scale(_scale, i),
-  );
+      List.generate(_scale.length, (i) => i + 1, growable: false),
+      value: (i) => Scale(_scale, i));
 
   /// root 2 b3 3 5 6
-  static get major => _modes[1];
+  static Scale get major => _modes[1]!;
 
   /// root b3 4 b5 5 b7
-  static get minor => _modes[6];
+  static Scale get minor => _modes[6]!;
 }

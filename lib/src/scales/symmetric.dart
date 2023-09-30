@@ -1,63 +1,64 @@
 import '../core.dart';
 
+//ignore: avoid_classes_with_only_static_members
 class Augmented {
   static const _scale = [
-    interval.min3,
-    interval.halfStep,
-    interval.min3,
-    interval.halfStep,
-    interval.min3,
-    interval.halfStep,
+    Interval.min3,
+    Interval.halfStep,
+    Interval.min3,
+    Interval.halfStep,
+    Interval.min3,
+    Interval.halfStep,
   ];
 
   static final _modes = Map<int, Scale>.fromIterable(
-    List.generate(2, (i) => i + 1, growable: false),
-    value: (i) => Scale(_scale, i),
-  );
+      List.generate(2, (i) => i + 1, growable: false),
+      value: (i) => Scale(_scale, i));
 
   /// #9 3 ##4 #5 7
-  static get augmented => _modes[1];
+  static Scale get augmented => _modes[1]!;
 
   /// b9 3 4 #5 bb7
-  static get augmentedInverse => _modes[2];
+  static Scale get augmentedInverse => _modes[2]!;
 }
 
+//ignore: avoid_classes_with_only_static_members
 class Diminished {
   static const _scale = [
-    interval.step,
-    interval.halfStep,
-    interval.step,
-    interval.halfStep,
-    interval.step,
-    interval.halfStep,
-    interval.step,
-    interval.halfStep,
+    Interval.step,
+    Interval.halfStep,
+    Interval.step,
+    Interval.halfStep,
+    Interval.step,
+    Interval.halfStep,
+    Interval.step,
+    Interval.halfStep,
   ];
 
   static final _modes = Map<int, Scale>.fromIterable(
-    List.generate(2, (i) => i + 1, growable: false),
-    value: (i) => Scale(_scale, i),
-  );
+      List.generate(2, (i) => i + 1, growable: false),
+      value: (i) => Scale(_scale, i));
 
   /// b2 b3 b4 b5 bb6 bb7 b7
   /// AKA half-whole
-  static get dominantDiminished => _modes[2];
+  static Scale get dominantDiminished => _modes[2]!;
 
   /// b3 b5 b6 bb7 7
   /// AKA whole-half
-  static get tonicDiminished => _modes[1];
+  static Scale get tonicDiminished => _modes[1]!;
 }
 
+//ignore: avoid_classes_with_only_static_members
 class WholeTone {
   static const _scale = [
-    interval.step,
-    interval.step,
-    interval.step,
-    interval.step,
-    interval.step,
-    interval.step,
+    Interval.step,
+    Interval.step,
+    Interval.step,
+    Interval.step,
+    Interval.step,
+    Interval.step,
   ];
 
   /// #4 #5 b7
-  static get scale => Scale(_scale);
+  static Scale get scale => Scale(_scale);
 }

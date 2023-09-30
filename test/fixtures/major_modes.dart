@@ -1,3 +1,4 @@
+//ignore_for_file: constant_identifier_names
 const A_aeolian = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const A_dorian = ['A', 'B', 'C', 'D', 'E', 'F#', 'G'];
 const A_ionian = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'];

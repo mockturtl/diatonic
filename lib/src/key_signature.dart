@@ -1,3 +1,5 @@
+//ignore_for_file: constant_identifier_names
+
 import 'core.dart';
 
 const _noteIndex = {
@@ -40,7 +42,7 @@ const _noteNames = [
 ];
 
 /// The index is the number of flats in the key signature.
-enum keyFlat {
+enum KeyFlat {
   C,
   F,
   Bb,
@@ -51,8 +53,8 @@ enum keyFlat {
   Cb,
 }
 
-/// The corresponding relative minor keys of [keyFlat].
-enum keyFlatMinor {
+/// The corresponding relative minor keys of [KeyFlat].
+enum KeyFlatMinor {
   Amin,
   Dmin,
   Gmin,
@@ -64,7 +66,7 @@ enum keyFlatMinor {
 }
 
 /// The index is the number of sharps in the key signature.
-enum keySharp {
+enum KeySharp {
   C,
   G,
   D,
@@ -75,8 +77,8 @@ enum keySharp {
   Csharp,
 }
 
-/// The corresponding relative minor keys of [keySharp].
-enum keySharpMinor {
+/// The corresponding relative minor keys of [KeySharp].
+enum KeySharpMinor {
   Amin,
   Emin,
   Bmin,
@@ -88,14 +90,15 @@ enum keySharpMinor {
 }
 
 class MajorKeyFlat with _ScaleNotes {
-  final keyFlat value;
+  final KeyFlat value;
 
   const MajorKeyFlat(this.value);
 
   int get flats => value.index;
 
-  keyFlatMinor get relativeMinor => keyFlatMinor.values[value.index];
+  KeyFlatMinor get relativeMinor => KeyFlatMinor.values[value.index];
 
+  @override
   String _present(String note) {
     switch (note) {
       case 'F#':
@@ -109,9 +112,9 @@ class MajorKeyFlat with _ScaleNotes {
       case 'A#':
         return 'Bb';
       case 'B':
-        return value == keyFlat.Gb || value == keyFlat.Cb ? 'Cb' : note;
+        return value == KeyFlat.Gb || value == KeyFlat.Cb ? 'Cb' : note;
       case 'E':
-        return value == keyFlat.Cb ? 'Fb' : note;
+        return value == KeyFlat.Cb ? 'Fb' : note;
       default:
         return note;
     }
@@ -119,22 +122,23 @@ class MajorKeyFlat with _ScaleNotes {
 }
 
 class MajorKeySharp with _ScaleNotes {
-  final keySharp value;
+  final KeySharp value;
 
   const MajorKeySharp(this.value);
 
-  keySharpMinor get relativeMinor => keySharpMinor.values[value.index];
+  KeySharpMinor get relativeMinor => KeySharpMinor.values[value.index];
 
   int get sharps => value.index;
 
+  @override
   String _present(String note) {
     switch (note) {
       case 'F':
-        return value == keySharp.Csharp || value == keySharp.Fsharp
+        return value == KeySharp.Csharp || value == KeySharp.Fsharp
             ? 'E#'
             : note;
       case 'C':
-        return value == keySharp.Csharp ? 'B#' : note;
+        return value == KeySharp.Csharp ? 'B#' : note;
       default:
         return note;
     }
@@ -142,14 +146,15 @@ class MajorKeySharp with _ScaleNotes {
 }
 
 class MinorKeyFlat with _ScaleNotes {
-  final keyFlatMinor value;
+  final KeyFlatMinor value;
 
   const MinorKeyFlat(this.value);
 
   int get flats => value.index;
 
-  keyFlat get relativeMajor => keyFlat.values[value.index];
+  KeyFlat get relativeMajor => KeyFlat.values[value.index];
 
+  @override
   String _present(String note) {
     switch (note) {
       case 'F#':
@@ -163,11 +168,11 @@ class MinorKeyFlat with _ScaleNotes {
       case 'A#':
         return 'Bb';
       case 'B':
-        return value == keyFlatMinor.EbMin || value == keyFlatMinor.AbMin
+        return value == KeyFlatMinor.EbMin || value == KeyFlatMinor.AbMin
             ? 'Cb'
             : note;
       case 'E':
-        return value == keyFlatMinor.AbMin ? 'Fb' : note;
+        return value == KeyFlatMinor.AbMin ? 'Fb' : note;
       default:
         return note;
     }
@@ -175,23 +180,24 @@ class MinorKeyFlat with _ScaleNotes {
 }
 
 class MinorKeySharp with _ScaleNotes {
-  final keySharpMinor value;
+  final KeySharpMinor value;
 
   const MinorKeySharp(this.value);
 
-  keySharp get relativeMajor => keySharp.values[value.index];
+  KeySharp get relativeMajor => KeySharp.values[value.index];
 
   int get sharps => value.index;
 
+  @override
   String _present(String note) {
     switch (note) {
       case 'F':
-        return value == keySharpMinor.AsharpMin ||
-                value == keySharpMinor.DsharpMin
+        return value == KeySharpMinor.AsharpMin ||
+                value == KeySharpMinor.DsharpMin
             ? 'E#'
             : note;
       case 'C':
-        return value == keySharpMinor.AsharpMin ? 'B#' : note;
+        return value == KeySharpMinor.AsharpMin ? 'B#' : note;
       default:
         return note;
     }
@@ -201,7 +207,7 @@ class MinorKeySharp with _ScaleNotes {
 mixin _ScaleNotes implements _ScalePresenter {
   List<String> notesFor(Scale scale, String rootNote) {
     var dist = 0;
-    final out = [tones[dist]];
+    var out = [tones[dist]];
     for (var i in scale.intervals) {
       dist += i;
       out.add(tones[dist % tones.length]);
@@ -209,13 +215,14 @@ mixin _ScaleNotes implements _ScalePresenter {
     out.removeLast(); // discard octave
 
     return out
-        .map((n) => (n + _noteIndex[rootNote]) % tones.length)
+        .map((n) => (n + _noteIndex[rootNote]!) % tones.length)
         .map((n) => _noteNames[n])
         .map(_present)
         .toList(growable: false);
   }
 }
 
-abstract class _ScalePresenter {
+//ignore: one_member_abstracts
+abstract interface class _ScalePresenter {
   String _present(String note);
 }

@@ -1,5 +1,5 @@
 import 'package:diatonic/diatonic.dart'
-    show quality, Major, MajorKeyFlat, MajorKeySharp, keySharp, keyFlat;
+    show KeyFlat, KeySharp, Major, MajorKeyFlat, MajorKeySharp, Quality;
 import 'package:test/test.dart';
 
 import 'fixtures/major_modes.dart';
@@ -7,31 +7,31 @@ import 'fixtures/major_modes.dart';
 void main() {
   group('major scale modes: chord qualities:', () {
     test('IΔ', () {
-      expect(Major.ionian.chordQuality, equals(quality.major));
+      expect(Major.ionian.chordQuality, equals(Quality.major));
     });
     test('ii7', () {
-      expect(Major.dorian.chordQuality, equals(quality.minor));
+      expect(Major.dorian.chordQuality, equals(Quality.minor));
     });
     test('iii7', () {
-      expect(Major.phrygian.chordQuality, equals(quality.minor));
+      expect(Major.phrygian.chordQuality, equals(Quality.minor));
     });
     test('IVΔ', () {
-      expect(Major.lydian.chordQuality, equals(quality.major));
+      expect(Major.lydian.chordQuality, equals(Quality.major));
     });
     test('V7', () {
-      expect(Major.mixolydian.chordQuality, equals(quality.dominant));
+      expect(Major.mixolydian.chordQuality, equals(Quality.dominant));
     });
     test('vi7', () {
-      expect(Major.aeolian.chordQuality, equals(quality.minor));
+      expect(Major.aeolian.chordQuality, equals(Quality.minor));
     });
     test('vii7b5', () {
-      expect(Major.locrian.chordQuality, equals(quality.min7b5));
+      expect(Major.locrian.chordQuality, equals(Quality.min7b5));
     });
   });
 
   group('Cmaj modes', () {
-    const key = MajorKeySharp(keySharp.C);
-    const key2 = MajorKeyFlat(keyFlat.C);
+    const key = MajorKeySharp(KeySharp.C);
+    const key2 = MajorKeyFlat(KeyFlat.C);
     test('C ionian', () {
       expect(key.notesFor(Major.ionian, 'C'), equals(C_ionian));
       expect(key2.notesFor(Major.ionian, 'C'), equals(C_ionian));
@@ -69,7 +69,7 @@ void main() {
   });
 
   group('Gmaj modes', () {
-    const key = MajorKeySharp(keySharp.G);
+    const key = MajorKeySharp(KeySharp.G);
     test('G ionian',
         () => expect(key.notesFor(Major.ionian, 'G'), equals(G_ionian)));
 
@@ -97,7 +97,7 @@ void main() {
   });
 
   group('Dmaj modes', () {
-    const key = MajorKeySharp(keySharp.D);
+    const key = MajorKeySharp(KeySharp.D);
     test('D ionian',
         () => expect(key.notesFor(Major.ionian, 'D'), equals(D_ionian)));
 
@@ -127,7 +127,7 @@ void main() {
   });
 
   group('Amaj modes', () {
-    const key = MajorKeySharp(keySharp.A);
+    const key = MajorKeySharp(KeySharp.A);
     test('A ionian',
         () => expect(key.notesFor(Major.ionian, 'A'), equals(A_ionian)));
 
@@ -159,7 +159,7 @@ void main() {
   });
 
   group('Emaj modes', () {
-    const key = MajorKeySharp(keySharp.E);
+    const key = MajorKeySharp(KeySharp.E);
     test('E ionian',
         () => expect(key.notesFor(Major.ionian, 'E'), equals(E_ionian)));
 
@@ -191,7 +191,7 @@ void main() {
   });
 
   group('Bmaj modes', () {
-    const key = MajorKeySharp(keySharp.B);
+    const key = MajorKeySharp(KeySharp.B);
     test('B ionian',
         () => expect(key.notesFor(Major.ionian, 'B'), equals(B_ionian)));
 
@@ -223,7 +223,7 @@ void main() {
   });
 
   group('F#maj modes', () {
-    const key = MajorKeySharp(keySharp.Fsharp);
+    const key = MajorKeySharp(KeySharp.Fsharp);
     test('F# ionian',
         () => expect(key.notesFor(Major.ionian, 'F#'), equals(Fsharp_ionian)));
 
@@ -255,7 +255,7 @@ void main() {
   });
 
   group('C#maj modes', () {
-    const key = MajorKeySharp(keySharp.Csharp);
+    const key = MajorKeySharp(KeySharp.Csharp);
     test('C# ionian',
         () => expect(key.notesFor(Major.ionian, 'C#'), equals(Csharp_ionian)));
 
@@ -287,7 +287,7 @@ void main() {
   });
 
   group('Fmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.F);
+    const key = MajorKeyFlat(KeyFlat.F);
     test('F ionian',
         () => expect(key.notesFor(Major.ionian, 'F'), equals(F_ionian)));
 
@@ -313,7 +313,7 @@ void main() {
   });
 
   group('Bbmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Bb);
+    const key = MajorKeyFlat(KeyFlat.Bb);
     test('Bb ionian',
         () => expect(key.notesFor(Major.ionian, 'Bb'), equals(Bb_ionian)));
 
@@ -339,7 +339,7 @@ void main() {
   });
 
   group('Ebmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Eb);
+    const key = MajorKeyFlat(KeyFlat.Eb);
     test('Eb ionian',
         () => expect(key.notesFor(Major.ionian, 'Eb'), equals(Eb_ionian)));
 
@@ -365,7 +365,7 @@ void main() {
   });
 
   group('Abmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Ab);
+    const key = MajorKeyFlat(KeyFlat.Ab);
     test('Ab ionian',
         () => expect(key.notesFor(Major.ionian, 'Ab'), equals(Ab_ionian)));
 
@@ -391,7 +391,7 @@ void main() {
   });
 
   group('Dbmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Db);
+    const key = MajorKeyFlat(KeyFlat.Db);
     test('Db ionian',
         () => expect(key.notesFor(Major.ionian, 'Db'), equals(Db_ionian)));
 
@@ -417,7 +417,7 @@ void main() {
   });
 
   group('Gbmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Gb);
+    const key = MajorKeyFlat(KeyFlat.Gb);
     test('Gb ionian',
         () => expect(key.notesFor(Major.ionian, 'Gb'), equals(Gb_ionian)));
 
@@ -443,7 +443,7 @@ void main() {
   });
 
   group('Cbmaj modes', () {
-    const key = MajorKeyFlat(keyFlat.Cb);
+    const key = MajorKeyFlat(KeyFlat.Cb);
     test('Cb ionian',
         () => expect(key.notesFor(Major.ionian, 'Cb'), equals(Cb_ionian)));
 
